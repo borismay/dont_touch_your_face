@@ -26,7 +26,10 @@ def con_detect():
         cv2.imshow('frame', cv2.cvtColor(img_detected, cv2.COLOR_RGB2BGR))
 
         if objects_touch(face, hands):
-            winsound.PlaySound("audiocheck.net_sin_1000Hz_-3dBFS_0.1s.wav", winsound.SND_NOWAIT)
+            try:
+                winsound.PlaySound("audiocheck.net_sin_1000Hz_-3dBFS_0.1s.wav", winsound.SND_NOWAIT)
+            except:
+                pass
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
