@@ -96,19 +96,3 @@ def objects_touch(face, hands):
                 return True
     return False
 
-
-############################################################################
-if __name__ == '__main__':
-    CLASSIFIERS_PATH = r'c:\Python\env381\Lib\site-packages\cv2\data'
-
-    classifiers = [
-        r'haarcascade_frontalface_default.xml',
-        r'haarcascade_frontalface_alt_tree.xml',
-        r'haarcascade_frontalface_alt2.xml',
-        r'haarcascade_frontalface_alt.xml',
-        r'haarcascade_eye_tree_eyeglasses.xml',
-        r'haarcascade_eye.xml',
-        # r'hand.xml',
-        r'face_recognition',
-        r'cvlib'
-    ]
