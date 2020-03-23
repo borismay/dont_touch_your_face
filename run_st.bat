@@ -1,0 +1,1 @@
+streamlit run face_detect_ui.py
