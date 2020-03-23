@@ -61,9 +61,8 @@ class CVLibDetector(Detector):
 
 
 class TSDetector(Detector):
-    def __init__(self, detection_th=0.5):
+    def __init__(self):
         self.detection_graph, self.sess = detector_utils.load_inference_graph()
-        self.detection_th = detection_th
 
     def detect(self, rgb_image):
         # returns (top [0], left [1], bottom [2], right [3])
@@ -71,7 +70,8 @@ class TSDetector(Detector):
 
         im_height, im_width = rgb_image.shape[:2]
 
-        objects = [(box[0] * im_height, box[3] * im_width, box[2] * im_height, box[1] * im_width) for box, score in zip(boxes, confidences) if score >= self.detection_th]
+        detection_th = self.detector_params.get('detection_th', 0.5)
+        objects = [(box[0] * im_height, box[3] * im_width, box[2] * im_height, box[1] * im_width) for box, score in zip(boxes, confidences) if score >= detection_th]
         # change to an array of (x, y, w, h)
         return [(int(left), int(top), int(right - left), int(bottom - top)) for (top, right, bottom, left) in objects]
 
